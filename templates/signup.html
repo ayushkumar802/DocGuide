@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChalakSetu Sign Up</title>
+    <link rel="icon" href="https://png.pngtree.com/png-clipart/20230812/original/pngtree-auto-mechanic-icon-color-flat-picture-image_7877632.png" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>ChalakSetu Sign Up</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="flash {{ category }}">
+                    <p style="color: red; text-align: center;">{{ message }}</p>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <form action="/signup" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Sign Up</button>
+                    <a href="/">Already have an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

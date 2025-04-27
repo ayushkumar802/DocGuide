@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChalakSetu Login / Sign Up</title>
+    <link rel="icon" href="https://png.pngtree.com/png-clipart/20230812/original/pngtree-auto-mechanic-icon-color-flat-picture-image_7877632.png" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>ChalakSetu Login</h2>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="flash {{ category }}">
+                         <p style="color: red; text-align: center;">{{ message }}</p>
+                      </div>
+
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+
+
+            <form action="/" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Login</button>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <div class="signup-link">
+                    <br>
+                    <p>Don't have an account? </p>
+                    <p><a href="/signup">Sign Up</a></p>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>
