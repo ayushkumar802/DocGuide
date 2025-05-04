@@ -56,6 +56,7 @@ def home():
                 vectorizer = pickle.load(f2)
 
             doctor_df = pd.read_csv('datasets/doctors_dataset_1000_v2.csv')
+            definition_ = pd.read_csv('datasets/specializations_definitions.csv', encoding='ISO-8859-1')
 
 
             # Make prediction
