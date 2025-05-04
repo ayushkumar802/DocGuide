@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocGuide - Sign-in</title>
-    <<link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+    <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_signin.css') }}">
 
 </head>
 
 
 <body>
+    <a style="text-decoration: none; opacity:0.4;" href="\"><</a>
      <div class="flash-message-container">
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -59,6 +60,5 @@
 
         </div>
     </div>
-      </script>
 </body>
 </html>
