@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocGuide - SignUp</title>
-    <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+    <title>DocGuide - Sign-in</title>
+    <<link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_signin.css') }}">
+
 </head>
 
+
 <body>
-        <div class="flash-message-container">
+     <div class="flash-message-container">
           {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
               {% for category, message in messages %}
@@ -30,33 +32,33 @@
             });
           });
         </script>
-    <div class="container" style="width:350px;">
+
+    <div class="container" style="width:330px;">
         <div class="form-container">
             <div class="logo">DocGuide</div>
 
-            <form action="/signup" method="POST">
-                <div class="input-group">
+
+            <form action="/signin" style="margin-top:10px;" method="POST">
+                <div class="input-group" >
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
-                </div>
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <input type="text" id="username" name="username" style="margin-top:5px;" placeholder="Enter your username" required>
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password" required>
-                </div>
-                <div class="input-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+                    <input type="password" id="password" name="password" style="margin-top:5px;" placeholder="Enter your password" required>
                 </div>
                 <div class="form-actions">
-                    <button type="submit">Sign Up</button>
-                    <a href="/signin">Already have an account?</a>
+                    <button type="submit">Log in</button>
+                    <a href="/forget">Forgot Password?</a>
+                </div>
+                <div class="signup-link">
+                    <br>
+                    <p>Don't have an account? <a href="/signup" class="signup-link"><br> Sign Up</a></p>
                 </div>
             </form>
+
         </div>
     </div>
+      </script>
 </body>
 </html>

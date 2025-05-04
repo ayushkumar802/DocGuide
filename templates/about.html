@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - DocGuide</title>
+  <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+
+<body>
+  <!-- Flash Messages -->
+  <div class="flash-message-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Background -->
+  <div class="background-image"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">DocGuide</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact/Support</a>
+      </nav>
+    </div>
+    <div class="nav-actions">
+      {% if not logged_in %}
+        <a href="/signin"><button class="signin-btn">Sign In</button></a>
+        <a href="/signup"><button class="register-btn">Register</button></a>
+      {% else %}
+        <a href="/logout"><button class="logout-btn">Logout</button></a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <main class="main-section">
+    <div class="content-container" style="width: 900px; margin-bottom: 400px; background-color: rgba(0,0,0,0.7); padding: 30px; border-radius: 20px; color: white; opacity:0.9;">
+      <h1 style="text-align:center;">About DocGuide</h1>
+
+      <p>DocGuide is a university project developed by a team of students from <strong>SAGE University, Indore</strong>. The main goal of this project is to help users identify the correct type of medical specialist they should consult based on a short description or prompt about their health concerns.</p>
+
+      <h2>🔍 What Does It Do?</h2>
+      <p>Users simply enter a brief text describing their symptoms or medical issue. Our trained machine learning model analyzes the prompt and predicts which type of specialist doctor is most relevant—such as a dermatologist, cardiologist, neurologist, etc.</p>
+      <p>We also provide the contact numbers of dummy doctors from that predicted specialty for informational purposes.</p>
+
+      <h2>👨‍💻 Project Team</h2>
+      <ul>
+        <li><strong>Ayush Kumar</strong> (Group Leader) - 23ENG2CIT1017</li>
+        <li><strong>Mohil Diwan</strong> - 23ADV3ACS0007</li>
+        <li><strong>Priya Malakar</strong> - 23ENG2CIT0042</li>
+      </ul>
+      <br>
+
+      <p style="margin-top:30px;">We are proud to build a smart assistant that bridges the gap between symptom identification and the right medical help using AI.</p>
+    </div>
+  </main>
+
+  <!-- Flash Message Auto-hide -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const flashMessages = document.querySelectorAll('.flash-message');
+      flashMessages.forEach((msg) => {
+        setTimeout(() => {
+          msg.style.transition = "opacity 0.5s ease";
+          msg.style.opacity = '0';
+          setTimeout(() => msg.remove(), 500);
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>

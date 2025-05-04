@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms & Conditions - DocGuide</title>
+  <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+
+<body>
+  <!-- Flash Messages -->
+  <div class="flash-message-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Background -->
+  <div class="background-image"></div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">DocGuide</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="#">Terms</a>
+        <a href="/contact">Contact/Support</a>
+      </nav>
+    </div>
+    <div class="nav-actions">
+      {% if not logged_in %}
+        <a href="/signin"><button class="signin-btn">Sign In</button></a>
+        <a href="/signup"><button class="register-btn">Register</button></a>
+      {% else %}
+        <a href="/logout"><button class="logout-btn">Logout</button></a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Terms Section -->
+  <main class="main-section">
+    <div class="content-container" style="width: 900px; margin-bottom: 400px; background-color: rgba(0,0,0,0.7); padding: 30px; border-radius: 20px; color: white; opacity:0.9;">
+      <h1 style="text-align:center; ">Terms and Conditions</h1>
+      <p>Welcome to DocGuide. By accessing or using this website, you agree to be bound by the following terms:</p>
+
+      <h3>1. Use of Service</h3>
+      <p>DocGuide is intended for informational purposes only and is not a substitute for professional medical advice or treatment.</p>
+
+      <h3>2. User Responsibilities</h3>
+      <p>You agree not to misuse the platform, provide false information, or attempt to breach the security of our system.</p>
+
+      <h3>3. Privacy</h3>
+      <p>Your personal information will be handled in accordance with our Privacy Policy. We do not share your data with third parties without consent.</p>
+
+      <h3>4. Limitation of Liability</h3>
+      <p>DocGuide shall not be held liable for any direct, indirect, or incidental damage arising from the use of the platform.</p>
+
+      <h3>5. Changes to Terms</h3>
+      <p>We reserve the right to update these terms at any time. Continued use of the platform implies acceptance of the revised terms.</p>
+
+      <p style="margin-top:35px;">If you have any questions or concerns about these terms, please <a href="/contact" style="color:#28a745;">contact us</a>.</p>
+    </div>
+  </main>
+
+  <!-- Flash Message Auto-hide -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const flashMessages = document.querySelectorAll('.flash-message');
+      flashMessages.forEach((msg) => {
+        setTimeout(() => {
+          msg.style.transition = "opacity 0.5s ease";
+          msg.style.opacity = '0';
+          setTimeout(() => msg.remove(), 500);
+        }, 1500);
+      });
+    });
+  </script>
+</body>
+</html>

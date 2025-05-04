@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocGuide - Forgot Password</title>
+    <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_signin.css') }}">
+</head>
+
+<body>
+ <div class="flash-message-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+    {% endwith %}
+  </div>
+    <div class="container" style="width:330px;">
+        <div class="form-container">
+            <div class="logo">DocGuide</div>
+
+<!--            {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--              {% if messages %}-->
+<!--                {% for category, message in messages %}-->
+<!--                  <div class="flash {{ category }}">-->
+<!--                     <p style="color: lightgreen; font-size: 15px; text-align: center;">{{ message }}</p>-->
+<!--                  </div>-->
+<!--                {% endfor %}-->
+<!--              {% endif %}-->
+<!--            {% endwith %}-->
+
+            <form action="/forget" method="POST">
+                <div class="input-group">
+                    <label for="email">Enter your email</label>
+                    <input style="margin-top:5px;" type="email" id="email" name="email" placeholder="Enter your registered email" required>
+                </div>
+                <div class="input-group">
+                    <label for="new_password">Enter new password</label>
+                    <input style="margin-top:5px;" type="password" id="password" name="password" placeholder="New password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit">Send OTP</button>
+                    <a href="/signin">Back to Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Auto-hide flash messages after 2 seconds
+          const flashMessages = document.querySelectorAll('.flash-message');
+          flashMessages.forEach((msg) => {
+            setTimeout(() => {
+              msg.style.transition = "opacity 0.5s ease";
+              msg.style.opacity = '0';
+              setTimeout(() => msg.remove(), 500); // remove from DOM after fade
+            }, 2500); // 2 seconds
+          });
+        });
+      </script>
+</body>
+</html>

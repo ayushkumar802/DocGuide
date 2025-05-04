@@ -1,198 +1,402 @@
-/* Resetting default styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Body styling */
-body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Container for the form */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-/* Form styling */
-.form-container {
-    background-color: #1a1a1a;
-    padding: 20px;
-    border: 2px solid #00ff00;
-    border-radius: 10px;
-    width: 25vw;
-    height: 60vh;
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
-}
-
-/* Heading styling */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Input group styling */
-.input-group {
-    margin-bottom: 15px;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    border: 1px solid #00ff00;
-    border-radius: 5px;
-    color: #00ff00;
-    font-size: 14px;
-}
-
-.input-group input:focus {
-    outline: none;
-    border-color: #00cc00;
-}
-
-/* Form actions styling */
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.form-actions button {
-    background-color: #00ff00;
-    color: black;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 48%;
-}
-
-.form-actions button:hover {
-    background-color: #00cc00;
-}
-
-.form-actions a {
-    color: #00ff00;
-    font-size: 12px;
-    text-decoration: none;
-}
-
-.form-actions a:hover {
-    text-decoration: underline;
-}
-
-/* Sign up link styling */
-.signup-link {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.signup-link a {
-    color: #00ff00;
-    text-decoration: none;
-}
-
-.signup-link a:hover {
-    text-decoration: underline;
+.background-image {
+  background-image: url("https://cdni.iconscout.com/illustration/premium/thumb/kids-playing-doctors-8917124-7285345.png");
+  background-repeat: no-repeat;
+  background-position-y: 100%; /* moves image downward */
+  background-position-x: center;
+  background-size: contain;
+  opacity: 0.2;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  height: 70%;
+  width: 100%;
+  z-index: -1;
 }
 
 
-/* Dropdown styling */
-.input-group select {
-    width: 250px;
-    padding: 10px;
-    background-color: #333;
-    border: 1px solid #00ff00;
-    border-radius: 5px;
-    color: #00ff00;
-    font-size: 14px;
+
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 
-/* Empty rectangle box */
-.empty-box {
-    margin-top: 30px;
-    width: 90%;
-    height: 200px;
-    background-color: #0a0a0a;
-    border: 2px dashed #00ff00;
-    border-radius: 10px;
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.nav-actions .login-btn {
+  background-color: transparent;
+  border: 1px solid #1a73e8;
+  color: #1a73e8;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-actions .login-btn:hover {
+  background-color: #e8f0fe;
+}
+
+/* Main content section */
+.main-section {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Input container like ChatGPT */
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 25px;
+  padding: 25px 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#prompt-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+#go-btn {
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#go-btn:hover {
+  background-color: #1e7e34;
+}
+
+/* Slide Panel */
+.slide-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-panel.open {
+  right: 0;
+}
+
+.panel-header {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+}
+
+.panel-content {
+  padding: 20px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #ffffff;
+  color: #000;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+.nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #000;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.signin-btn,
+.register-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #000000;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.register-btn {
+  background-color: #28a745;
+}
+
+.signin-btn:hover {
+  background-color: #0056b3;
+}
+
+.register-btn:hover {
+  background-color: #1e7e34;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:  center;
+  margin-top: 140px;
+}
+
+.assist-text {
+  color: #333333;
+  font-size: 21px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 
-/* Start button full width */
-#start-btn {
-    width: 100px;
+/*---- new csss -------*/
+
+
+.quote-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin-top: -160px; /* move it up */
 }
 
-/* Form styling - updated for bigger box */
-.form-container-2 {
-    background-color: #1a1a1a;
-    padding: 30px;
-    border: 2px solid #00ff00;
-    border-radius: 10px;
-    width: 65vw; /* 60% of the viewport width */
-    height: 75vh; /* 70% of the viewport height */
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #2c3e50;
 }
 
-
-.empty-box {
-    margin-top: 30px;
-    width: 90%;
-    min-height: 200px;  /* fixed minimum height */
-    background-color: #000;
-    border: 2px solid #00ff00;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+.author {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #7f8c8d;
 }
 
-/* List styling inside the box */
-.empty-box ul {
-    list-style: none;
-    padding: 0;
-    width: 100%;
+/* ----- new slide css ----- */
+.popup-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4); /* slightly lighter overlay */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.empty-box li {
-    margin: 8px 0;
-    font-size: 16px;
-    text-align: center;
-    color: #00ff00;
-    font-family: 'Courier New', Courier, monospace;
+.popup-content {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* soft shadow */
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  opacity: 0.97;
 }
 
-/* Text message when no mechanics */
-.empty-box p {
-    font-size: 16px;
-    text-align: center;
-    color: #00ff00;
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #333;
 }
 
+.specialization-title {
+  font-size: 28px;
+  font-weight: 630;
+  color: #28a745;
+  margin-bottom: 10px;
+}
 
+.specialization-definition {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.doctor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+  justify-content: center;
+}
+
+.doctor-card {
+  flex: 1 1 calc(33.333% - 40px);
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-size: 16px;
+  color: #333;
+  min-width: 250px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .doctor-card {
+    flex: 1 1 100%;
+  }
+}
+#popupModal {
+  display: none; /* This should be hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Background overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.flash-message-container {
+  position: fixed;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.flash-message {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 80px;
+  background-color: #f44336; /* red for error */
+  opacity:0.8;
+  color: white;
+  font-weight: bold;
+}
+
+.flash-message {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.flash-message.success {
+  background-color: green;
+}
+
+/* Flash category: error (red) */
+.flash-message.error {
+  background-color: #dc3545;
+}
+
+.logout-btn {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 12px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #222;
+  transform: scale(1.03);
+}

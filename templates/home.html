@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocGuide - Home</title>
+  <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+</head>
+
+<body>
+<div class="flash-message-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+
+
+  <!-- Background Image -->
+  <div class="background-image"></div>
+
+  <!-- Header/Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">DocGuide</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="/about">About</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact/Support</a>
+      </nav>
+    </div>
+    <div class="nav-actions">
+      {% if not logged_in %}
+        <a href="/signin"><button class="signin-btn">Sign In</button></a>
+        <a href="/signup"><button class="register-btn">Register</button></a>
+      {% else %}
+        <a href="/logout"><button class="logout-btn">Logout</button></a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Main Section -->
+  <main class="main-section">
+    <div class="quote-container">
+      <blockquote>"The presence of a doctor is the beginning of hope."</blockquote>
+      <p class="author">— Anonymous</p>
+      <br><br><br><br><br><br>
+      <p class="assist-text">I'm here to assist you with any health-related issues</p>
+      <form id="query-form" method="POST">
+          <div class="input-container" style="width:700px;">
+            <input type="text" placeholder="Elaborate your symptom..." id="prompt-input" name="prompt-input" {% if not logged_in %}disabled{% endif %} />
+            <button type="submit" id="go-btn">
+              <span style="font-weight: 900; font-family: 'Segoe UI Symbol'; font-size: 15px;">↑</span>
+            </button>
+          </div>
+      </form>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Auto-hide flash messages after 2 seconds
+          const flashMessages = document.querySelectorAll('.flash-message');
+          flashMessages.forEach((msg) => {
+            setTimeout(() => {
+              msg.style.transition = "opacity 0.5s ease";
+              msg.style.opacity = '0';
+              setTimeout(() => msg.remove(), 500); // remove from DOM after fade
+            }, 1500); // 2 seconds
+          });
+        });
+      </script>
+
+
+
+
+    </div>
+  </main>
+
+  <!-- Pop-up Modal -->
+  {% if specialization %}
+    <!-- Pop-up Modal -->
+    <div id="popupModal" class="popup-modal">
+      <div class="popup-content">
+        <button class="close-btn">&times;</button>
+        <h2 class="specialization-title">{{ specialization }}</h2>
+        <p class="specialization-definition">{{ definition }}</p>
+        <ul class="doctor-grid">
+          {% for doctor in list_ %}
+            <li class="doctor-card">
+              <strong>{{ doctor[0] }}</strong><br>
+              <span>📞 Phone: {{ doctor[1] }}</span><br>
+              <span>📍 Address: {{ doctor[2] }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+
+
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const popup = document.getElementById("popupModal");
+    const closeBtn = document.querySelector(".close-btn");
+
+    // Show popup only if specialization is passed from server
+    {% if specialization %}
+      popup.style.display = "flex";
+    {% endif %}
+
+    // Close popup
+    closeBtn.addEventListener("click", function () {
+      popup.style.display = "none";
+    });
+  });
+</script>
+
+
+
+
+
+
+</body>
+</html>

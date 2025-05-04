@@ -2,26 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Verify OTP</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocGuide - Verification</title>
+    <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_signin.css') }}">
+
 </head>
 <body>
+    <div class="flash-message-container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="flash-message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const flashMessages = document.querySelectorAll('.flash-message');
+        flashMessages.forEach((msg) => {
+          setTimeout(() => {
+            msg.style.transition = "opacity 0.5s ease";
+            msg.style.opacity = '0';
+            setTimeout(() => msg.remove(), 500);
+          }, 2000);
+        });
+      });
+    </script>
     <div class="container">
         <div class="form-container">
-            <h2>Verify Your Email</h2>
-
-            {% with messages = get_flashed_messages(with_categories=true) %}
-              {% if messages %}
-                {% for category, message in messages %}
-                  <p style="color: red;">{{ message }}</p>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
+            <h2 style="font-size: 30px;">Verify Your Email</h2>
 
             <form action="/verify_otp" method="POST">
-                <div class="input-group">
+                <div class="input-group" style="margin-top:15px;">
                     <label for="otp">Enter OTP</label>
-                    <input type="text" id="otp" name="otp" placeholder="Enter the OTP sent to your email" required>
+                    <input style="margin-top:5px;" type="text" id="otp" name="otp" placeholder="Enter the OTP sent to your email" required>
                 </div>
                 <div class="form-actions">
                     <button type="submit">Verify OTP</button>
